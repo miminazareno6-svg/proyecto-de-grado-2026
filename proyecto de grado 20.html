@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salud Saludable</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f9f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .frase-motivadora {
+      text-align: center;
+      font-style: italic;
+      margin: 20px;
+      font-size: 1.4em;
+      color: #2e7d32;
+    }
+
+    .contenido {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 30px;
+    }
+
+    .seccion {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 300px;
+      margin: 15px;
+      text-align: center;
+    }
+
+    .seccion img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .seccion h2 {
+      color: #388e3c;
+    }
+
+    button {
+      background-color: #66bb6a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #4caf50;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e8f5e9;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    /* Estilos para la calculadora de salud */
+    .calculadora {
+      background-color: #fff;
+      margin: 40px auto;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .calculadora table {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .calculadora td {
+      padding: 8px;
+    }
+
+    .calculadora input {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #resultado {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #2e7d32;
+    }
+
+    /* JUEGO */
+    .juego {
+      background: #fff;
+      margin: 40px auto;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    #tablero {
+      display: grid;
+      grid-template-columns: repeat(4, 70px);
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .carta {
+      width: 70px;
+      height: 70px;
+      background-color: #C8E6C9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* COMENTARIOS */
+    .comentarios {
+      background: #fff;
+      margin: 40px auto;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    textarea {
+      width: 90%;
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    #listaComentarios {
+      margin-top: 15px;
+      text-align: left;
+      color: #444;
+    }
+    .tabla-peso {
+      background-color: #fff;
+      margin: 40px auto;
+      max-width: 700px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .tabla-peso h2 {
+      color: #388e3c;
+      text-align: center;
+    }
+
+    .tabla-peso table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .tabla-peso th, .tabla-peso td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .tabla-peso th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .tabla-peso tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Vida Saludable</h1>
+    <p>Tu cuerpo es tu templo, cuídalo</p>
+  </header>
+
+  <p class="frase-motivadora">"El mayor tesoro es una buena salud."</p>
+
+  <div class="contenido">
+
+    <div class="seccion">
+      <img src="descarga.jpeg" alt="Alimentación Saludable">
+      <h2>Alimentación</h2>
+      <p>Una dieta balanceada fortalece el sistema inmunológico y mejora tu energía diaria.</p>
+      <button onclick="mostrarConsejo('alimentacion')">Ver consejo</button>
+    </div>
+
+    <div class="seccion">
+      <img src="descarga (1).jpeg" alt="Ejercicio físico">
+      <h2>Ejercicio</h2>
+      <p>El ejercicio regular mejora tu salud física, mental y emocional.</p>
+      <button onclick="mostrarConsejo('ejercicio')">Ver consejo</button>
+    </div>
+
+    <div class="seccion">
+      <img src="descarga (2).jpeg" alt="Descanso y mente sana">
+      <h2>Descanso y Mente</h2>
+      <p>Un buen descanso y una mente relajada son clave para una vida larga y feliz.</p>
+      <button onclick="mostrarConsejo('descanso')">Ver consejo</button>
+    </div>
+    <div class="contenido">
+    <div class="seccion">
+      <img src="descarga (3).jpeg" alt="consejo profesional">
+      <h2>Consejo</h2>
+      <p>No existe un enfoque único para lograr una vida saludable, ya que cada persona tiene necesidades singulares respecto a su cuerpo y su salud en general. 
+        Para algunas personas un cambio en la alimentación podría implicar incorporar más vegetales en cada comida, 
+        y para otras significará reducir la cantidad de azúcar o comidas procesadas , explica Mariana Villaseñor Saucedo, nutricioni           sta en Ever Health.</p>
+    </div>
+    <div class="contenido">
+    <div class="seccion">
+      <img src="descarga (4).jpeg" alt="para que sirve una buena alimentacion">
+      <h2>Consejo</h2>
+      <p>proporcionar al cuerpo la energía y los nutrientes necesarios para funcionar correctamente, ayudando a prevenir enfermedades crónicas (cardíacas, diabetes, obesidad), controlar el peso, fortalecer el sistema inmunológico, mejorar la salud física y mental, y mantener una piel, huesos, ojos y músculos sanos, además de optimizar el rendimiento físico y la digestión. </p>
+</div>
+    <div class="contenido">
+    <div class="seccion">
+      <img src="images.jpeg" alt="¿Cómo lograrla?
+">
+      <h2>Consejo</h2>
+      <p>Variedad: Consume frutas, verduras, granos integrales, proteínas magras (pollo, pescado, legumbres) y lácteos bajos en grasa.
+Limita: Reduce el consumo de sal, azúcares añadidos, alcohol y grasas no saludables.
+Hidratación: Bebe mucha agua.
+Porciones: Realiza comidas pequeñas y frecuentes en lugar de pocas y abundantes.
+Hábitos: Mastica bien, come a horas regulares y, si es posible, involucra a la familia. </p>
+</div>
+    <div class="contenido">
+    <div class="seccion">
+      <img src="images (1).jpeg" alt="Beneficios Clave">
+      <h2>Consejo</h2>
+      <p>        Salud Física General: Mantiene tu piel, ojos, dientes y huesos fuertes, además de regular el tránsito intestinal.
+Prevención de Enfermedades: Reduce significativamente el riesgo de desarrollar obesidad, diabetes tipo 2, hipertensión y ciertos tipos de cáncer.
+Energía y Vitalidad: Te da el combustible necesario para tener más energía, mejorar la concentración y el estado de ánimo.
+Sistema Inmunológico Fuerte: Fortalece tus defensas contra patógenos y enfermedades.
+Control de Peso: Ayuda a mantener un peso saludable y a mejorar la composición corporal.
+Rendimiento: Mejora el rendimiento físico y deportivo.
+Salud Mental: Contribuye a reducir el estrés y mejora el bienestar general. </p>
+</div>
+    <div class="contenido">
+    <div class="seccion">
+      <img src="images (2).jpeg" alt="Salud Ósea">
+      <h2>Consejo</h2>
+      <p>Una dieta rica en calcio y vitamina D (presentes en lácteos bajos en grasa, pescados grasos y verduras de hoja verde) es crucial para mantener huesos fuertes y prevenir la osteoporosis.</p>
+</div>
+    <div class="contenido">
+    <div class="seccion">
+      <img src="images (3).jpeg" alt="Mejora del Aspecto Físico">
+      <h2>Consejo</h2>
+      <p>Una nutrición adecuada se refleja en una piel, cabello y uñas más sanos. Las vitaminas, los minerales y una hidratación correcta ayudan a mantener la elasticidad de la piel y un brillo natural.</p>
+
+  </div>
+
+  <!-- Sección: Calculadora de Salud -->
+  <div class="calculadora">
+    <h2>Calculadora de Salud</h2>
+    <p>Completa tus datos y descubre si tienes un peso saludable.</p>
+    <table>
+      <tr>
+        <td><label for="nombre">Nombre:</label></td>
+        <td><input type="text" id="nombre" required></td>
+      </tr>
+      <tr>
+        <td><label for="edad">Edad:</label></td>
+        <td><input type="number" id="edad" required></td>
+      </tr>
+      <tr>
+        <td><label for="peso">Peso (kg):</label></td>
+        <td><input type="number" id="peso" step="0.1" required></td>
+      </tr>
+      <tr>
+        <td><label for="altura">Altura (cm):</label></td>
+        <td><input type="number" id="altura" step="0.1" required></td>
+      </tr>
+    </table>
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <p id="resultado"></p>
+  </div>
+
+  <!-- 🎮 JUEGO AÑADIDO -->
+  <div class="juego">
+    <h2>Juego de Memoria Saludable 🍎</h2>
+    <p>Encuentra las parejas de frutas.</p>
+    <div id="tablero"></div>
+    <button onclick="iniciarJuego()">Iniciar Juego</button>
+    <p id="estadoJuego"></p>
+  </div>
+
+  <!-- 💬 COMENTARIOS AÑADIDOS -->
+  <div class="comentarios">
+    <h2>Deja tu comentario 💬</h2>
+    <textarea id="comentario" rows="3" placeholder="Escribe aquí..."></textarea><br>
+    <button onclick="agregarComentario()">Publicar</button>
+    <div id="listaComentarios"></div>
+  </div>
+  <div class="tabla-peso">
+    <h2>Tabla de peso ideal según altura</h2>
+    <p>Basado en el rango de IMC saludable (18.5 – 24.9)</p>
+    <table id="tablaPesos">
+      <thead>
+        <tr>
+          <th>Altura (cm)</th>
+          <th>Peso mínimo (kg)</th>
+          <th>Peso máximo (kg)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <footer>
+    © 2025 Vida Saludable | Diseñado para inspirarte a vivir mejor
+  </footer>
+
+  <script>
+    function mostrarConsejo(seccion) {
+      let mensaje = "";
+
+      switch(seccion) {
+        case 'alimentacion':
+          mensaje = "Come más frutas y verduras, y reduce el consumo de azúcares y procesados.";
+          break;
+        case 'ejercicio':
+          mensaje = "Realiza al menos 30 minutos de actividad física al día, como caminar, bailar o nadar.";
+          break;
+        case 'descanso':
+          mensaje = "Duerme entre 7 y 8 horas por noche. Medita o desconéctate del celular antes de dormir.";
+          break;
+      }
+
+      alert(mensaje);
+    }
+
+    function calcularIMC() {
+      const nombre = document.getElementById("nombre").value;
+      const edad = parseInt(document.getElementById("edad").value);
+      const peso = parseFloat(document.getElementById("peso").value);
+      const alturaCm = parseFloat(document.getElementById("altura").value);
+
+      if (!nombre || isNaN(edad) || isNaN(peso) || isNaN(alturaCm)) {
+        alert("Por favor, completa todos los campos correctamente.");
+        return;
+      }
+
+      const alturaM = alturaCm / 100;
+      const imc = peso / (alturaM * alturaM);
+      let mensaje = "";
+
+      if (imc < 18.5) {
+        mensaje = `${nombre}, tu IMC es ${imc.toFixed(2)}. Estás por debajo del peso ideal.`;
+      } else if (imc >= 18.5 && imc < 25) {
+        mensaje = `${nombre}, tu IMC es ${imc.toFixed(2)}. ¡Tienes un peso saludable!`;
+      } else if (imc >= 25 && imc < 30) {
+        mensaje = `${nombre}, tu IMC es ${imc.toFixed(2)}. Tienes sobrepeso.`;
+      } else {
+        mensaje = `${nombre}, tu IMC es ${imc.toFixed(2)}. Estás en obesidad, cuida tu salud.`;
+      }
+
+      document.getElementById("resultado").innerText = mensaje;
+    }
+    function pesoMinimo(altura_m) {
+      return 18.5 * Math.pow(altura_m, 2);
+    }
+    function pesoMaximo(altura_m) {
+      return 24.9 * Math.pow(altura_m, 2);
+    }
+
+    function fmt(n) {
+      const v = Math.round(n * 10) / 10;
+      return (v % 1 === 0) ? v.toFixed(0) : v.toFixed(1);
+    }
+
+    const tbody = document.querySelector("#tablaPesos tbody");
+    for (let cm = 140; cm <= 200; cm += 5) {
+      const m = cm / 100;
+      const min = pesoMinimo(m);
+      const max = pesoMaximo(m);
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td>${cm}</td>
+        <td>${fmt(min)}</td>
+        <td>${fmt(max)}</td>
+      `;
+      tbody.appendChild(fila);
+    }
+
+    // 🎮 Juego de memoria
+    const frutas = ['🍎','🍌','🍇','🍉','🍎','🍌','🍇','🍉'];
+    let seleccionadas = [];
+    let aciertos = 0;
+    let bloqueo = false;
+
+    function iniciarJuego() {
+      const tablero = document.getElementById('tablero');
+      tablero.innerHTML = "";
+      aciertos = 0;
+      seleccionadas = [];
+      bloqueo = false;
+      const barajadas = [...frutas].sort(() => Math.random() - 0.5);
+      barajadas.forEach((emoji) => {
+        const carta = document.createElement('div');
+        carta.classList.add('carta');
+        carta.dataset.valor = emoji;
+        carta.addEventListener('click', () => voltearCarta(carta));
+        tablero.appendChild(carta);
+      });
+      document.getElementById('estadoJuego').textContent = "";
+    }
+
+    function voltearCarta(carta) {
+      if (bloqueo || carta.textContent !== "") return;
+      carta.textContent = carta.dataset.valor;
+      seleccionadas.push(carta);
+      if (seleccionadas.length === 2) {
+        bloqueo = true;
+        setTimeout(() => {
+          if (seleccionadas[0].dataset.valor === seleccionadas[1].dataset.valor) {
+            seleccionadas.forEach(c => c.style.backgroundColor = "#A5D6A7");
+            aciertos++;
+          } else {
+            seleccionadas.forEach(c => c.textContent = "");
+          }
+          seleccionadas = [];
+          bloqueo = false;
+          if (aciertos === frutas.length / 2) {
+            document.getElementById('estadoJuego').textContent = "¡Ganaste! 🎉";
+          }
+        }, 600);
+      }
+    }
+
+    // 💬 Comentarios
+    function agregarComentario() {
+      const texto = document.getElementById("comentario").value.trim();
+      if (texto === "") {
+        alert("Por favor escribe un comentario.");
+        return;
+      }
+      const contenedor = document.getElementById("listaComentarios");
+      const nuevo = document.createElement("p");
+      nuevo.textContent = "💬 " + texto;
+      contenedor.appendChild(nuevo);
+      document.getElementById("comentario").value = "";
+    }
+  </script>
+
+</body>
+</html>
